@@ -26,7 +26,7 @@ While originally designed for Spotify, this works for any media playing on your 
 
 <h3>Setup</h3>
 In order for the app to communicate with the computer, a python script must be ran on the computer which is playing media. <br>
-You can get the server script [here](https://github.com/tahirwrth/Meedi/blob/master/server/generic.pyw) <br>
+You can get the server script <a href="https://github.com/tahirwrth/Meedi/blob/master/server/generic.pyw" title="here">here</a><br>
 In the app, press back (or swipe depending on your device), and change the address to your computer's local IP address with port 5000. <br>
 Press save and restart the app. As long as your script is running and the app is running, you are good to go! <br>
 Ensure your firewall is not blocking traffic to port 5000, and your Android device can find your computer on the local network or else this will not work and will require a workaround such as Tailscale.
