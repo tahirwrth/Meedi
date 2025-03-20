@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Blurred Background Album Cover -->
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:alpha="0.6"
+        android:contentDescription="@string/background_image" />
+
+    <!-- Dark Overlay for Better Visibility -->
+    <View
+        android:id="@+id/darkOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#20000000" />
+
+    <!-- Main Content Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <!-- Album Cover -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coverImageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            app:strokeWidth="0dp"
+            app:shapeAppearanceOverlay="@style/RoundedCoverArt"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="30dp"/>
+
+        <!-- Hidden Menu -->
+        <FrameLayout
+            android:id="@+id/hiddenMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <EditText
+                    android:id="@+id/hiddenInput"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_ip" />
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Song Info and Controls -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginEnd="32dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/songName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/song_title"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:textSize="36sp"
+                android:ellipsize="marquee"
+                android:maxWidth="440dp"
+                android:singleLine="true"
+                android:layout_gravity="center_horizontal" />
+
+
+
+            <TextView
+                android:id="@+id/artistName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="28sp"
+                android:fontFamily="@font/sf_pro_display_light"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:maxWidth="370dp"
+                android:layout_marginBottom="0dp"
+                android:text="@string/artist" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp"
+                android:gravity="center_horizontal">
+
+                <ImageButton
+                    android:id="@+id/prevButton"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/previous_button"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/carplay_back"
+                    app:tint="#FFFFFF" />
+
+                <ImageButton
+                    android:id="@+id/playPauseButton"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="@string/play_pause_button"
+                    android:src="@drawable/ic_pause"
+                    app:tint="#FFFFFF" />
+
+                <ImageButton
+                    android:id="@+id/nextButton"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/carplay_next"
+                    android:contentDescription="@string/next_button"
+                    app:tint="#FFFFFF" />
+
+            </LinearLayout>
+
+            <!-- Elapsed Time Text -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Elapsed Time Text -->
+                <TextView
+                    android:id="@+id/elapsedTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/progress"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/sf_pro_display_light"
+                    android:layout_marginStart="8dp" />
+
+                <!-- SeekBar -->
+                <SeekBar
+                    android:id="@+id/songProgressBar"
+                    android:layout_width="0dp"
+                    android:layout_height="6dp"
+                    android:layout_weight="1"
+                    android:progressDrawable="@drawable/custom_progress_bar"
+                    android:thumb="@null"
+                    android:max="100"
+                    android:indeterminate="false"/>
+
+                <!-- Remaining Time Text -->
+                <TextView
+                    android:id="@+id/remainingTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remaining"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/sf_pro_display_light"
+                    android:layout_marginEnd="8dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
